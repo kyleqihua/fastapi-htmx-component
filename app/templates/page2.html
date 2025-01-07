@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}Page2{% endblock %}
+
+{% block content %}
+<h2>This is Page2</h2>
+
+<!-- 如果只是想重复使用，也可以跟 index.html 一样 static include -->
+<!-- 下面展示另外一种思路：让用户点击按钮时，才动态加载某个特定用户的卡片 -->
+
+<button 
+    hx-get="/user_card/1" 
+    hx-target="#dynamic-user-card" 
+    hx-swap="innerHTML">
+    Load Alice's Card
+</button>
+
+<button 
+    hx-get="/user_card/2" 
+    hx-target="#dynamic-user-card" 
+    hx-swap="innerHTML">
+    Load Bob's Card
+</button>
+
+<button 
+    hx-get="/user_card/3" 
+    hx-target="#dynamic-user-card" 
+    hx-swap="innerHTML">
+    Load Carol's Card
+</button>
+
+<div id="dynamic-user-card" class="user-cards">
+    <!-- HTMX 会在点击按钮后，把 /user_card/{id} 的返回 HTML 注入到这里 -->
+</div>
+
+{% endblock %}

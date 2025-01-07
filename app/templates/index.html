@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>Welcome to the Home Page</h2>
+
+<!-- 直接渲染多个用户卡片，users 来自后端 context -->
+<div class="user-cards">
+    {% for user in users %}
+        <!-- 通过 include 语法，把 _user_card.html 嵌入进来 -->
+        {% include "partials/_user_card.html" %}
+    {% endfor %}
+</div>
+
+{% endblock %}

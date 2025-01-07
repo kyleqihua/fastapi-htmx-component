@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}FastAPI + HTMX Component{% endblock %}</title>
+    
+    <!-- 引入 HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    
+    <!-- 引入公共 CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>My Web Application</h1>
+        <nav>
+            <a href="{{ url_for('get_index') }}">Home</a> |
+            <a href="{{ url_for('get_page2') }}">Page2</a>
+        </nav>
+    </header>
+
+    <!-- 页面主体内容 -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- 公共 JS -->
+    <script src="{{ url_for('static', path='js/script.js') }}"></script>
+</body>
+</html>
